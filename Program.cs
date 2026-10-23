@@ -1,57 +1,152 @@
-﻿
-using System.Security.Cryptography;
-int x = 10;
-int y = 10;
-string character = "x";
-
-
-while (true)
+﻿using System;
+public class Program
 {
-    Console.SetCursorPosition(0,0);
-    Console.WriteLine("-------------------------------------------------------------");
-    Console.WriteLine("¦                                                           ¦");
-    Console.WriteLine("¦                                                           ¦");
-    Console.WriteLine("¦                                                           ¦");
-    Console.WriteLine("¦                                                           ¦");
-    Console.WriteLine("¦                                                           ¦");
-    Console.WriteLine("¦                                                           ¦");
-    Console.WriteLine("¦                                                           ¦");
-    Console.WriteLine("¦                                                           ¦");
-    Console.WriteLine("¦                                                           ¦");
-    Console.WriteLine("¦                                                           ¦");
-    Console.WriteLine("¦                                                           ¦");
-    Console.WriteLine("¦                                                           ¦");
-    Console.WriteLine("¦                                                           ¦");
-    Console.WriteLine("¦                                                           ¦");
-    Console.WriteLine("¦                                                           ¦");
-    Console.WriteLine("-------------------------------------------------------------");
+    static int x = 1;
+    static int y = 1;
+
+    static string[] Maze =
+    {
+            "############################################################",
+            "#                                                          #",
+            "#                                                          #",
+            "#                                                          #",
+            "#                                                          #",
+            "#                                                          #",
+            "#                                                          #",
+            "#                                                          #",
+            "#                                                          #",
+            "#                                                          #",
+            "#                                                          #",
+            "#                                                          #",
+            "#                                                          #",
+            "#                                                          #",
+            "############################################################"
+        };
+
+    public static void Main()
+    {
+        Console.SetWindowSize(60, 17);
+        Menu();
+    }
+
+    public static void Menu()
+    {
+        Console.SetCursorPosition(15, 0);
+        Console.WriteLine("=============================");
+        Console.SetCursorPosition(15, 1);
+        Console.WriteLine("========= LABYRINTH =========");
+        Console.SetCursorPosition(15, 2);
+        Console.WriteLine("=============================");
+
+        Console.SetCursorPosition(15, 4);
+        Console.WriteLine("1. Easy");
+        Console.SetCursorPosition(15, 5);
+        Console.WriteLine("2. Hard");
+        Console.SetCursorPosition(15, 6);
+        Console.WriteLine("3. Exit");
+
+        Console.SetCursorPosition(0, 7);
 
 
-    Console.SetCursorPosition(x, y);
-    Console.WriteLine(character);
+        string input = Console.ReadLine();
 
-    ConsoleKeyInfo Up = Console.ReadKey();
-    if (Up.Key == ConsoleKey.UpArrow)
-    {
-        y = y - 1;
+        if (input == "1")
+        {
+            Console.Clear();
+            Labyrinth();
+        }
+        else if (input == "2")
+        {
+            Console.Clear();
+            Labyrinth();
+        }
+        else if (input == "3")
+        {
+            Console.Clear();
+            return;
+        }
     }
-    ConsoleKeyInfo Down = Console.ReadKey();
-    if (Down.Key == ConsoleKey.DownArrow)
+    public static void Labyrinth()
     {
-        y += 1;
+        Console.SetCursorPosition(0, 0);
+
+        foreach (string level in Maze)
+        {
+            Console.WriteLine(level);
+        }
+        Movement();
+
     }
-    ConsoleKeyInfo Right = Console.ReadKey();
-    if (Right.Key == ConsoleKey.RightArrow)
+
+    public static void Movement()
     {
-        x += 1;
-    }
-    ConsoleKeyInfo Left = Console.ReadKey();
-    if (Left.Key == ConsoleKey.LeftArrow)
-    {
-        x = x - 1;
+        while (true)
+        {
+            Console.SetCursorPosition(x, y);
+            Console.Write("X");
+
+            ConsoleKeyInfo UserInput = Console.ReadKey(true);
+
+            Console.SetCursorPosition(x, y);
+            Console.Write(" ");
+
+            if (UserInput.Key == ConsoleKey.UpArrow)
+            {
+                y--;
+            }
+            else if (UserInput.Key == ConsoleKey.DownArrow)
+            {
+                y++;
+            }
+            else if (UserInput.Key == ConsoleKey.RightArrow)
+            {
+                x++;
+            }
+            else if (UserInput.Key == ConsoleKey.LeftArrow)
+            {
+                x--;
+            }
+
+            if (y < 0 || y >= Maze.Length ||
+                x < 0 || x >= Maze[0].Length)
+            {
+                if (UserInput.Key == ConsoleKey.UpArrow)
+                {
+                    y++;
+                }
+                else if (UserInput.Key == ConsoleKey.DownArrow)
+                {
+                    y--;
+                }
+                else if (UserInput.Key == ConsoleKey.RightArrow)
+                {
+                    x--;
+                }
+                else if (UserInput.Key == ConsoleKey.LeftArrow)
+                {
+                    x++;
+                }
+            }
+            else if (Maze[y][x] == '#')
+            {
+                if (UserInput.Key == ConsoleKey.UpArrow)
+                {
+                    y++;
+                }
+                else if (UserInput.Key == ConsoleKey.DownArrow)
+                {
+                    y--;
+                }
+                else if (UserInput.Key == ConsoleKey.RightArrow)
+                {
+                    x--;
+                }
+                else if (UserInput.Key == ConsoleKey.LeftArrow)
+                {
+                    x++;
+                }
+            }
+        }
+
     }
 }
-
-
-
-//if((AsyncFlowControl.ModifierKeys  & Key) != 0))
