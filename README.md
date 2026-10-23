@@ -14,7 +14,7 @@ Ich habe ein Quadratische Platform für Labyrinth erstellt. Nachher habe ich Cha
 
 
 ## 23.10.2026 (Planung)
-- [ ] Funktion für Charakter-Bewegungen erstellen
+- [X] Funktion für Charakter-Bewegungen erstellen
 - [ ] Ein Funktion, die Labyrinthraums ändert entwickeln
-- [ ] Labyrinth zeichnen
+- [X] Labyrinth zeichnen
 - [ ] Labyrinth mit charaktere zeichnen
