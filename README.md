@@ -28,22 +28,23 @@ Ich habe einen Main Menu erstellt, Bildschirmgrösse von Terminal verändert und
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ## 30.10.2026 (Planung)
-- [ ] Ich will ein Timer programmieren, der Gesamte Zeit und Rekordzeit zeigt
-- [ ] Ich will ein Funktion, der Weg für den Labyrinth entscheidet, erstellen
+- [x] Ich will ein Timer programmieren, der Gesamte Zeit und Rekordzeit zeigt
+- [x] Ich will ein Funktion, der Weg für den Labyrinth entscheidet, erstellen
 - [ ] Ich will mit dem Funktion Randomizer anfangen, damit Labyrinth immer neu wird
 - [X] Ich will ein Hauptmenu fürs Spiel erstellen
 
 ## 30.10.2026
-
+  Ich habe zuerst einen Timer mit eine neue Funktion erstellt. Nachher habe ich probiert, eine Funktion zu erstellen, damit Das Programm einen Weg für Labyrinth zeichnet. Es ist nicht ganz fertig aber funktioniert bisschen.
+  
 ## 06.11.2026 (HA)
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ## 06.11.2026 (Planung)
-- [ ] 
-- [ ] 
-- [ ] 
-- [ ] 
-- [ ] 
+- [ ] Ich will die Aussehen verbessern, weil mit WriteLine sieht man die Cursor. Ich mache so, damit man die Cursor nicht sehen kann
+- [ ] Ich will mit dem Funktion Randomizer anfangen, damit Labyrinth immer neu wird
+- [ ] Ich will gespeicherte Rekordzeit für Timer erstellen, damit man Rekord immer sehen kann, auch wenn man App schliesst.
+- [ ] Ich will mit dem Funktion Randomizer anfangen, damit Labyrinth immer neu wird
+- [ ] Ich will ein Funktion, der Weg für den Labyrinth entscheidet, weiterentwickeln
 
 ## 06.11.2026 
 
