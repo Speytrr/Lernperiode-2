@@ -15,7 +15,7 @@ Ich habe ein Quadratische Platform für Labyrinth erstellt. Nachher habe ich Cha
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ## 23.10.2026 (Planung)
 - [X] Funktion für Charakter-Bewegungen erstellen
-- [ ] Ein Funktion, die Labyrinthraums ändert entwickeln (NICHT MEHR GEPLANT)
+<del> -- [ ] Ein Funktion, die Labyrinthraums ändert entwickeln 
 - [X] Labyrinth zeichnen
 - [X] Labyrinth mit charaktere zeichnen
 
@@ -50,7 +50,7 @@ Ich habe einen Main Menu erstellt, Bildschirmgrösse von Terminal verändert und
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ## 13.11.2026 (Planung)
-<del> -- [ ] 
+- [ ] 
 
 ## 13.11.2026 
 
