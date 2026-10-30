@@ -1,8 +1,13 @@
-﻿using System;
+using System;
+using System.Diagnostics;
+using System.Threading;
 public class Program
 {
     static int x = 1;
     static int y = 1;
+    static int time = 0;
+    static int width = 60;
+    static int height = 15;
 
     static string[] Maze =
     {
@@ -53,11 +58,15 @@ public class Program
         if (input == "1")
         {
             Console.Clear();
+            Thread timerThread = new Thread(Timer);
+            timerThread.Start();
             Labyrinth();
         }
         else if (input == "2")
         {
             Console.Clear();
+            Thread timerThread = new Thread(Timer);
+            timerThread.Start();
             Labyrinth();
         }
         else if (input == "3")
@@ -78,75 +87,116 @@ public class Program
 
     }
 
+    public static void Timer()
+    {
+        while (true)
+        {
+            Thread.Sleep(1000);
+            time++;
+        }
+    }
+
+
     public static void Movement()
     {
         while (true)
         {
+            Console.SetCursorPosition(0, 16);
+            Console.Write("Time: " + time + " seconds");
+
             Console.SetCursorPosition(x, y);
             Console.Write("X");
-
-            ConsoleKeyInfo UserInput = Console.ReadKey(true);
 
             Console.SetCursorPosition(x, y);
             Console.Write(" ");
 
-            if (UserInput.Key == ConsoleKey.UpArrow)
+            if (Console.KeyAvailable)
             {
-                y--;
-            }
-            else if (UserInput.Key == ConsoleKey.DownArrow)
-            {
-                y++;
-            }
-            else if (UserInput.Key == ConsoleKey.RightArrow)
-            {
-                x++;
-            }
-            else if (UserInput.Key == ConsoleKey.LeftArrow)
-            {
-                x--;
+                ConsoleKeyInfo UserInput = Console.ReadKey(true);
+                if (UserInput.Key == ConsoleKey.UpArrow)
+                {
+                    y--;
+                }
+                else if (UserInput.Key == ConsoleKey.DownArrow)
+                {
+                    y++;
+                }
+                else if (UserInput.Key == ConsoleKey.RightArrow)
+                {
+                    x++;
+                }
+                else if (UserInput.Key == ConsoleKey.LeftArrow)
+                {
+                    x--;
+                }
+
+                if (y < 0 || y >= Maze.Length ||
+                    x < 0 || x >= Maze[0].Length)
+                {
+                    if (UserInput.Key == ConsoleKey.UpArrow)
+                    {
+                        y++;
+                    }
+                    else if (UserInput.Key == ConsoleKey.DownArrow)
+                    {
+                        y--;
+                    }
+                    else if (UserInput.Key == ConsoleKey.RightArrow)
+                    {
+                        x--;
+                    }
+                    else if (UserInput.Key == ConsoleKey.LeftArrow)
+                    {
+                        x++;
+                    }
+                }
+                else if (Maze[y][x] == '#')
+                {
+                    if (UserInput.Key == ConsoleKey.UpArrow)
+                    {
+                        y++;
+                    }
+                    else if (UserInput.Key == ConsoleKey.DownArrow)
+                    {
+                        y--;
+                    }
+                    else if (UserInput.Key == ConsoleKey.RightArrow)
+                    {
+                        x--;
+                    }
+                    else if (UserInput.Key == ConsoleKey.LeftArrow)
+                    {
+                        x++;
+                    }
+                }
+
+
             }
 
-            if (y < 0 || y >= Maze.Length ||
-                x < 0 || x >= Maze[0].Length)
-            {
-                if (UserInput.Key == ConsoleKey.UpArrow)
-                {
-                    y++;
-                }
-                else if (UserInput.Key == ConsoleKey.DownArrow)
-                {
-                    y--;
-                }
-                else if (UserInput.Key == ConsoleKey.RightArrow)
-                {
-                    x--;
-                }
-                else if (UserInput.Key == ConsoleKey.LeftArrow)
-                {
-                    x++;
-                }
-            }
-            else if (Maze[y][x] == '#')
-            {
-                if (UserInput.Key == ConsoleKey.UpArrow)
-                {
-                    y++;
-                }
-                else if (UserInput.Key == ConsoleKey.DownArrow)
-                {
-                    y--;
-                }
-                else if (UserInput.Key == ConsoleKey.RightArrow)
-                {
-                    x--;
-                }
-                else if (UserInput.Key == ConsoleKey.LeftArrow)
-                {
-                    x++;
-                }
-            }
+            
         }
+
+    }
+
+    public static void Labyrinth2()
+    {
+        Console.SetCursorPosition(0, 0);
+
+        for (int y = 0; y < height; y++)
+        {
+            for (int x = 0; x < width; x++)
+            {
+                //Console.Write(Maze[]);
+            }
+
+            Console.WriteLine();
+        }
+
+        Movement();
+    }
+
+    public static void CreatePath()
+    {
 
     }
 }
