@@ -43,6 +43,7 @@ Ich habe bisschen über Randomized Depth-First Search (DFS) nachgeschaut und sel
 - [x] Ich will die Aussehen verbessern, weil mit WriteLine sieht man die Cursor. Ich mache so, damit man die Cursor nicht sehen kann
 - [ ] Ich will mit dem Funktion Randomizer anfangen, damit Labyrinth immer neu wird
 - [X] Ich will gespeicherte Rekordzeit für Timer erstellen, damit man Rekord immer sehen kann, auch wenn man App schliesst.
+      
 <del> [ ] Ich will mit dem Funktion Randomizer anfangen, damit Labyrinth immer neu wird
 - [X] Ich will ein Funktion, der Weg für den Labyrinth entscheidet, weiterentwickeln
 
