@@ -15,7 +15,6 @@ Ich habe ein Quadratische Platform für Labyrinth erstellt. Nachher habe ich Cha
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ## 23.10.2026 (Planung)
 - [X] Funktion für Charakter-Bewegungen erstellen
-      
 <del> [ ] Ein Funktion, die Labyrinthraums ändert entwickeln <del>
 - [X] Labyrinth zeichnen
 - [X] Labyrinth mit charaktere zeichnen
@@ -49,22 +48,25 @@ Ich habe bisschen über Randomized Depth-First Search (DFS) nachgeschaut und sel
 
 ## 06.11.2026 
 Ich habe Rekord für den Timer erstellt, nachher einen Funktion, der einen Weg mit + Zeichen erstellt. + schafft es nicht bis am Ende und kommt zu Dead ends, dafür muss ich DFS benutzen, ich werde es nächstes mal rechechieren. Aussehen habe ich auch verbessert aber man sieht den cursor immer noch. Zurzeit funktioniert das Programm nicht wichtig weil beide CreatePath und Movement gleichzeitig anfangen, es ist kein grosses Problem, wenn CreatePath fertig ist wurden sie in Reihennach funktionieren. Mit dem Randomizer könnte ich nicht anfangen weil ich noch kein Weg habe
-## 13.11.2026 (HA)
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ## 13.11.2026 (Planung)
 - [ ] CreatePath ohne Dead ends bis am Ende zu bringen
 - [ ] Mit CreatePath erstellte Weg als ein echtes Weg nehmen, damit ein echtes Labyrinth entstehen kann
-- [ ] Rekordzeit wird in einem Textdatei gespeichert und wurde jedes mal angezeigt,
-- [ ] Cursor Problem lösen, wenn es eine Weg gibt, Cursor unsichtbar zu machen, werde ich das machen
+- [X] Rekordzeit wird in einem Textdatei gespeichert und wurde jedes mal angezeigt
+- [X] Cursor Problem lösen, wenn es eine Weg gibt, Cursor unsichtbar zu machen, werde ich das machen
 
 ## 13.11.2026 
-
+Ich habe StreamWriter und StreamReader für Speicherung des Rekords benutzt. Jetzt wird neue Rekords gespeichert und aufs Hauptmenü angezeigt. Cursor habe ich mit Hide unsichtbar gemacht, jetzt sieht das Spiel schöner aus. CreatePath habe ich weiterentwickelt und verändert aber ich finde es immer noch schwierig, mit dem DFS recht zu kommen. Ich probiere eine neue Weg aus, indem erstellte Path zurück geht, falls es Dead End kommt.
 ## 20.11.2026 (HA)
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ## 20.11.2026 (Planung)
-- [ ] 
+- [ ] CreatePath ohne Dead ends bis am Ende zu bringen
+- [ ] Mit CreatePath erstellte Weg als ein echtes Weg nehmen, damit ein echtes Labyrinth entstehen kann
+- [ ] Funktion CreatePath im Hintergrund arbeitbar machen, damit Funktionen Movement wieder geöffnet werden kann
+- [ ] Die Labyrinth aussehen verbessern, damit es immer seine Farbe verändert
+- [ ] Top 3 Rekordzeiten speichern lassen (also nicht nur eine)
 
 
 
