@@ -61,10 +61,11 @@ Ich habe Rekord für den Timer erstellt, nachher einen Funktion, der einen Weg m
 ## 13.11.2026 
 Ich habe StreamWriter und StreamReader für Speicherung des Rekords benutzt. Jetzt wird neue Rekords gespeichert und aufs Hauptmenü angezeigt. Cursor habe ich mit Hide unsichtbar gemacht, jetzt sieht das Spiel schöner aus. CreatePath habe ich weiterentwickelt und verändert aber ich finde es immer noch schwierig, mit dem DFS recht zu kommen. Ich probiere eine neue Weg aus, indem erstellte Path zurück geht, falls es Dead End kommt.
 ## 20.11.2026 (HA)
+CreatePath kann die Dead Ends markieren und zurückgehen. Weg geht nicht mehr ins Markierungen und erstellt eine richtige Weg zu dem Ausgang
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ## 20.11.2026 (Planung)
-- [ ] CreatePath ohne Dead ends bis am Ende zu bringen
+- [X] CreatePath ohne Dead ends bis am Ende zu bringen
 - [ ] Mit CreatePath erstellte Weg als ein echtes Weg nehmen, damit ein echtes Labyrinth entstehen kann
 - [ ] Funktion CreatePath im Hintergrund arbeitbar machen, damit Funktionen Movement wieder geöffnet werden kann
 - [ ] Die Labyrinth aussehen verbessern, damit es immer seine Farbe verändert
