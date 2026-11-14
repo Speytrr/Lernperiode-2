@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using System.Diagnostics;
 using System.Threading;
 using System.Collections.Generic;
@@ -20,6 +21,7 @@ public class Program
     {
             "############################################################",
             "#S                                                         #",
+            "#                                                          #",
             "#                                                          #",
             "#                                                          #",
             "#                                                          #",
@@ -104,7 +106,6 @@ public class Program
         Thread movementThread = new Thread(Movement);
         Thread createPathThread = new Thread(CreatePath);
 
-        //movementThread.Start();
         createPathThread.Start();
     }
 
@@ -205,76 +206,79 @@ public class Program
 
     public static void CreatePath()
     {
-        timerThread.Start();
         int pathX = 1;
         int pathY = 1;
+        bool foundWay = false;
         Random coordinates = new Random();
         List<int> availableDirections = new List<int>();
         bool[,] visited = new bool[Maze.Length, 13];
         List<(int x, int y)> locations = new List<(int x, int y)>();
+        locations.Add((pathX, pathY));
 
         int changeX = coordinates.Next(4);
         Console.SetCursorPosition(pathX, pathY);
 
-        while (!reachedEnd)
+        while (!foundWay)
         {
-            int steps = -1;
-            int goBack = 0;
             availableDirections.Clear();
-            bool foundWay = false;
+
             while (!foundWay)
             {
                 
-                if (pathY + 1 < Maze.Length && Maze[pathY + 1][pathX] == ' ')
+                if (pathY + 2 < Maze.Length && Maze[pathY + 2][pathX] == ' ')
                     availableDirections.Add(0);
 
-                if (pathX + 1 < Maze[pathY].Length && Maze[pathY][pathX + 1] == ' ')
+                if (pathX + 2 < Maze[pathY].Length && Maze[pathY][pathX + 2] == ' ')
                     availableDirections.Add(1);
 
-                if (pathY - 1 >= 0 && Maze[pathY - 1][pathX] == ' ')
+                if (pathY - 2 >= 0 && Maze[pathY - 2][pathX] == ' ')
                     availableDirections.Add(2);
 
-                if (pathX - 1 >= 0 && Maze[pathY][pathX - 1] == ' ')
+                if (pathX - 2 >= 0 && Maze[pathY][pathX - 2] == ' ')
                     availableDirections.Add(3);
 
                 if (availableDirections.Count == 0)
                 {
-                    (pathX, pathY) = locations[steps - 1 - goBack];
-                    goBack++;
+                    for (int i = 0; i < 2; i++)
+                    {
+                        Maze[pathY] = Maze[pathY].Remove(pathX, 1).Insert(pathX, "x");
+                        Console.SetCursorPosition(pathX, pathY);
+                        Console.Write(" ");
+                        locations.RemoveAt(locations.Count - 1);
+                        (pathX, pathY) = locations[locations.Count - 1];
+                    }
                     break;
                 }
 
                 changeX = availableDirections[coordinates.Next(availableDirections.Count)];
 
-                if (changeX == 0)
-                    pathY++;
-                else if (changeX == 1)
-                    pathX++;
-                else if (changeX == 2)
-                    pathY--;
-                else if (changeX == 3)
-                    pathX--;
+                for (int c = 0; c <= 1; c++)
+                {
+                    if (changeX == 0)
+                        pathY += 1;
+                    else if (changeX == 1)
+                        pathX += 1;
+                    else if (changeX == 2)
+                        pathY -= 1;
+                    else if (changeX == 3)
+                        pathX -= 1;
+                    locations.Add((pathX, pathY));
+                    Console.SetCursorPosition(pathX, pathY);
+                    Maze[pathY] = Maze[pathY].Remove(pathX, 1).Insert(pathX, "+");
+                    Console.Write("+");
+                }
 
-                locations.Add((pathX, pathY));
-                steps++;
                 break;
             }
 
-
-
-            Console.SetCursorPosition(pathX, pathY);
-
-            Maze[pathY] = Maze[pathY].Remove(pathX, 1).Insert(pathX, "+");
-
-            Console.Write("+");
-
-            if ((pathX, pathY) == (58, 13))
-                reachedEnd = true;
-
+            if ((pathX, pathY) == (57, 13))
+            {
+                Maze[13] = Maze[13].Remove(58, 1).Insert(58, "+");
+                Console.SetCursorPosition(58, 13);
+                Console.Write("+");
+                foundWay = true;
+            }
             Thread.Sleep(200);
-            //There could be dead ends but its functional
         }
     }
-
-
 }
