@@ -66,10 +66,10 @@ CreatePath kann die Dead Ends markieren und zurückgehen. Weg geht nicht mehr in
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ## 20.11.2026 (Planung)
 - [X] CreatePath ohne Dead ends bis am Ende zu bringen
-- [ ] Mit CreatePath erstellte Weg als ein echtes Weg nehmen, damit ein echtes Labyrinth entstehen kann
-- [ ] Funktion CreatePath im Hintergrund arbeitbar machen, damit Funktionen Movement wieder geöffnet werden kann
-- [ ] Die Labyrinth aussehen verbessern, damit es immer seine Farbe verändert
-- [ ] Top 3 Rekordzeiten speichern lassen (also nicht nur eine)
+- [X] Mit CreatePath erstellte Weg als ein echtes Weg nehmen, damit ein echtes Labyrinth entstehen kann
+- [X] Funktion CreatePath im Hintergrund arbeitbar machen, damit Funktionen Movement wieder geöffnet werden kann
+- [X] Die Labyrinth aussehen verbessern, damit es immer seine Farbe verändert
+<del>- [ ] Top 3 Rekordzeiten speichern lassen (also nicht nur eine) <del/>
 
 
 
