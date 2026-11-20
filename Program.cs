@@ -11,16 +11,18 @@ public class Program
     static int time = 0;
     static int width = 60;
     static int height = 15;
+    static int recordTime = 9999;
     static int changeX;
-    static int recordTime = 0;
     static bool reachedEnd = false;
     public static Thread timerThread = new Thread(Timer);
+
 
 
     static string[] Maze =
     {
             "############################################################",
             "#S                                                         #",
+            "#                                                          #",
             "#                                                          #",
             "#                                                          #",
             "#                                                          #",
@@ -43,13 +45,13 @@ public class Program
     public static void Main()
     {
         Console.CursorVisible = false;
-        Console.SetWindowSize(60, 17);
         Menu();
     }
 
     public static void Menu()
     {
-        string savedRecord = RecordReader();
+        string savedRecord = "No record yet!";
+        savedRecord = RecordReader();
 
         Console.SetCursorPosition(15, 0);
         Console.WriteLine("=============================");
@@ -65,9 +67,10 @@ public class Program
         Console.SetCursorPosition(15, 6);
         Console.WriteLine("3. Exit");
         Console.SetCursorPosition(15, 8);
-        Console.WriteLine(savedRecord + " seconds");
+        Console.WriteLine("Record: " + savedRecord + " seconds");
 
-        Console.SetCursorPosition(0,7);
+        
+        Console.SetCursorPosition(0, 7);
 
 
         string input = Console.ReadLine();
@@ -75,12 +78,12 @@ public class Program
         if (input == "1")
         {
             Console.Clear();
-            Labyrinth();
+            CreatePath();
         }
         else if (input == "2")
         {
             Console.Clear();
-            Labyrinth();
+            CreatePath();
         }
         else if (input == "3")
         {
@@ -94,36 +97,14 @@ public class Program
         using (StreamReader readrec = new StreamReader("Record.txt"))
             return readrec.ReadLine(); 
     }
-    public static void Labyrinth()
-    {
-        Console.SetCursorPosition(0, 0);
-
-        foreach (string level in Maze)
-        {
-            Console.WriteLine(level);
-        }
-
-        Thread movementThread = new Thread(Movement);
-        Thread createPathThread = new Thread(CreatePath);
-
-        createPathThread.Start();
-    }
 
     public static void Timer()
     {
         while (!reachedEnd)
         {
-            Console.SetCursorPosition(0, 16);
-            Console.Write("Time: " + time + " seconds");
             Thread.Sleep(1000);
             time++;
-        }
-        if (recordTime == 0 || time < recordTime)
-        {
-            recordTime = time;
-        }
-        using (StreamWriter record = new StreamWriter("Record.txt"))
-            record.WriteLine("Record: " + recordTime);
+        }        
     }
 
     public static void Movement()
@@ -131,9 +112,22 @@ public class Program
         timerThread.Start();
         while (!reachedEnd)
         {
+            Console.SetCursorPosition(0, 17);
+            Console.Write("Time: " + time + " seconds");
+
             Console.SetCursorPosition(x, y);
             Console.Write("X");
 
+            if ((x, y) == (58,15))
+            {
+                if (time < recordTime)
+                {
+                    recordTime = time;
+                    using (StreamWriter record = new StreamWriter("Record.txt"))
+                        record.WriteLine(recordTime);
+                }
+                reachedEnd = true;
+            }
 
             if (Console.KeyAvailable)
             {
@@ -215,9 +209,11 @@ public class Program
         List<(int x, int y)> locations = new List<(int x, int y)>();
         locations.Add((pathX, pathY));
 
+        //timerThread.Start();
+
         int changeX = coordinates.Next(4);
         Console.SetCursorPosition(pathX, pathY);
-
+        
         while (!foundWay)
         {
             availableDirections.Clear();
@@ -241,9 +237,9 @@ public class Program
                 {
                     for (int i = 0; i < 2; i++)
                     {
-                        Maze[pathY] = Maze[pathY].Remove(pathX, 1).Insert(pathX, "x");
+                        Maze[pathY] = Maze[pathY].Remove(pathX, 1).Insert(pathX, "o");
                         Console.SetCursorPosition(pathX, pathY);
-                        Console.Write(" ");
+                        Console.Write("o");
                         locations.RemoveAt(locations.Count - 1);
                         (pathX, pathY) = locations[locations.Count - 1];
                     }
@@ -271,14 +267,51 @@ public class Program
                 break;
             }
 
-            if ((pathX, pathY) == (57, 13))
+            if ((pathX, pathY) == (58, 14) || (pathX, pathY) == (57, 15))
             {
-                Maze[13] = Maze[13].Remove(58, 1).Insert(58, "+");
-                Console.SetCursorPosition(58, 13);
+                Maze[13] = Maze[13].Remove(pathX, 1).Insert(pathX, "+");
+                Console.SetCursorPosition(pathX, pathY);
                 Console.Write("+");
+                Console.Clear();
+                CreateWalls();
                 foundWay = true;
             }
-            Thread.Sleep(200);
         }
+    }
+
+    public static void CreateWalls()
+    {
+       for (int fillingX = 1; fillingX < 59; fillingX++)
+        {
+            for (int fillingY = 1; fillingY < 16; fillingY++)
+            {
+                if (Maze[fillingY][fillingX] == ' ')
+                    Maze[fillingY] = Maze[fillingY].Remove(fillingX, 1).Insert(fillingX, "#");
+                else
+                    Maze[fillingY] = Maze[fillingY].Remove(fillingX, 1).Insert(fillingX, " ");
+
+            }
+        }
+        Console.SetCursorPosition(0, 0);
+
+        foreach (string level in Maze)
+        {
+            foreach (char c in level)
+            {
+                if (c == '#')
+                    Console.ForegroundColor = ConsoleColor.DarkBlue;
+                else
+                    Console.ForegroundColor = ConsoleColor.Gray;
+
+                Console.Write(c);
+            }
+
+            Console.WriteLine();
+        }
+
+        Console.ResetColor();
+
+        Movement();
+
     }
 }
