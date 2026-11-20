@@ -69,7 +69,24 @@ CreatePath kann die Dead Ends markieren und zurückgehen. Weg geht nicht mehr in
 - [X] Mit CreatePath erstellte Weg als ein echtes Weg nehmen, damit ein echtes Labyrinth entstehen kann
 - [X] Funktion CreatePath im Hintergrund arbeitbar machen, damit Funktionen Movement wieder geöffnet werden kann
 - [X] Die Labyrinth aussehen verbessern, damit es immer seine Farbe verändert
-<del>- [ ] Top 3 Rekordzeiten speichern lassen (also nicht nur eine) <del/>
+      
+<del>- [ ] Top 3 Rekordzeiten speichern lassen (also nicht nur eine)
+
+## 20.11.2026
+Heute habe ich Wegerstellung fürs Labyrinth abgeschlossen. Man kann mit X Charaktere bis am Ende laufen, es gibt sogar falsche Wegs mit Deadends. Rekordzeit wird gespeichert. 3 Rekordzeiten hat kein Sinn für mich gemacht, deswegen habe ich es weggelassen. Das ganze Labyrinthwand # ist auch blau gemalt.
+## 27.11.2026 (HA)
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+## 27.11.2026 (Planung)
+- [ ] Labyrinthgrösse 2 mal vergrössern
+- [ ] Falsche Wege verbessern, damit sie wirklich lang weitergehen und nicht nur aus kurze Dead ends entstehen
+- [ ] Ein Loading Screen für Hauptmenü erstellen
+- [ ] Labyrinthsymbole verändern. Spielercharakter ist "X" und die Wände sind "#". Ich will möglichst bessere Symbole oder Charaktere fürs Labyrinth finden.
+
+
+## 27.11.2026
+
+## 04.12.2026 (HA)
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 
